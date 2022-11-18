@@ -80,7 +80,10 @@ func handleMsgMhfGetUdSchedule(s *Session, p mhfpacket.MHFPacket) {
 	}
 
 	bf.WriteUint32(id)
-	for _, timestamp := range timestamps {
+	for i, timestamp := range timestamps {
+		if i == 4 {
+			continue
+		}
 		bf.WriteUint32(timestamp)
 	}
 

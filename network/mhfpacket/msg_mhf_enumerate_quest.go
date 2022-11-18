@@ -15,7 +15,6 @@ type MsgMhfEnumerateQuest struct {
 	World     uint8
 	Counter   uint16
 	Offset    uint16 // Increments to request following batches of quests
-	Unk4      uint8  // Hardcoded 0 in the binary
 }
 
 // Opcode returns the ID associated with this packet type.
@@ -30,7 +29,6 @@ func (m *MsgMhfEnumerateQuest) Parse(bf *byteframe.ByteFrame, ctx *clientctx.Cli
 	m.World = bf.ReadUint8()
 	m.Counter = bf.ReadUint16()
 	m.Offset = bf.ReadUint16()
-	m.Unk4 = bf.ReadUint8()
 	return nil
 }
 

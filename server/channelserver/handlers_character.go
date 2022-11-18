@@ -127,6 +127,7 @@ func (save *CharacterSaveData) Decompress() error {
 
 // This will update the character save with the values stored in the save struct
 func (save *CharacterSaveData) updateSaveDataWithStruct() {
+	return // TODO: Find Z1 save pointers
 	rpBytes := make([]byte, 2)
 	binary.LittleEndian.PutUint16(rpBytes, save.RP)
 	copy(save.decompSave[pointerRP:pointerRP+2], rpBytes)
@@ -135,6 +136,7 @@ func (save *CharacterSaveData) updateSaveDataWithStruct() {
 
 // This will update the save struct with the values stored in the character save
 func (save *CharacterSaveData) updateStructWithSaveData() {
+	return // TODO: Find Z1 save pointers
 	if save.decompSave[pointerGender] == 1 {
 		save.Gender = true
 	} else {
