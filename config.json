@@ -9,6 +9,7 @@
   "PatchServerManifest": "",
   "PatchServerFile": "",
   "ScreenshotAPIURL": "",
+  "DeleteOnSaveCorruption": false,
   "DevMode": true,
   "DevModeOptions": {
     "AutoCreateAccount": true,
@@ -81,11 +82,6 @@
     "User": "postgres",
     "Password": "",
     "Database": "erupe"
-  },
-  "Launcher": {
-    "Enabled": false,
-    "Port": 80,
-    "UseOriginalLauncherFiles": false
   },
   "Sign": {
     "Enabled": true,

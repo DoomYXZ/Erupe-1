@@ -12,24 +12,24 @@ import (
 
 // Config holds the global server-wide config.
 type Config struct {
-	Host                string `mapstructure:"Host"`
-	BinPath             string `mapstructure:"BinPath"`
-	Language            string
-	DisableSoftCrash    bool   // Disables the 'Press Return to exit' dialog allowing scripts to reboot the server automatically
-	FeaturedWeapons     int    // Number of Active Feature weapons to generate daily
-	HideLoginNotice     bool   // Hide the Erupe notice on login
-	LoginNotice         string // MHFML string of the login notice displayed
-	PatchServerManifest string // Manifest patch server override
-	PatchServerFile     string // File patch server override
-	ScreenshotAPIURL    string // Destination for screenshots uploaded to BBS
-	DevMode             bool
+	Host                   string `mapstructure:"Host"`
+	BinPath                string `mapstructure:"BinPath"`
+	Language               string
+	DisableSoftCrash       bool   // Disables the 'Press Return to exit' dialog allowing scripts to reboot the server automatically
+	FeaturedWeapons        int    // Number of Active Feature weapons to generate daily
+	HideLoginNotice        bool   // Hide the Erupe notice on login
+	LoginNotice            string // MHFML string of the login notice displayed
+	PatchServerManifest    string // Manifest patch server override
+	PatchServerFile        string // File patch server override
+	ScreenshotAPIURL       string // Destination for screenshots uploaded to BBS
+	DeleteOnSaveCorruption bool   // Attempts to save corrupted data will flag the save for deletion
+	DevMode                bool
 
 	DevModeOptions DevModeOptions
 	Discord        Discord
 	Commands       []Command
 	Courses        []Course
 	Database       Database
-	Launcher       Launcher
 	Sign           Sign
 	SignV2         SignV2
 	Channel        Channel
@@ -87,13 +87,6 @@ type Database struct {
 	User     string
 	Password string
 	Database string
-}
-
-// Launcher holds the launcher server config.
-type Launcher struct {
-	Enabled                  bool
-	Port                     int
-	UseOriginalLauncherFiles bool
 }
 
 // Sign holds the sign server config.

@@ -2,6 +2,7 @@ package channelserver
 
 import (
 	"encoding/binary"
+	"errors"
 
 	"erupe-ce/network/mhfpacket"
 	"erupe-ce/server/channelserver/compression/nullcomp"
@@ -56,6 +57,7 @@ func GetCharacterSaveData(s *Session, charID uint32) (*CharacterSaveData, error)
 	}
 	defer result.Close()
 	if !result.Next() {
+		err = errors.New("no savedata found")
 		s.logger.Error("No savedata found", zap.Uint32("charID", charID))
 		return nil, err
 	}
