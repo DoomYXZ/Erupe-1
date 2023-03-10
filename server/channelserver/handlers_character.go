@@ -11,14 +11,14 @@ import (
 
 const (
 	pointerGender        = 0x81    // +1
-	pointerRP            = 0x22D16 // +2
-	pointerHouseTier     = 0x1FB6C // +5
-	pointerHouseData     = 0x1FE01 // +195
-	pointerBookshelfData = 0x22298 // +5576
+	pointerRP            = 0x1A076 // +2
+	pointerHouseTier     = 0x16ECC // +5
+	pointerHouseData     = 0x17161 // +195
+	pointerBookshelfData = 0x195F8 // +5576
 	// Gallery data also exists at 0x21578, is this the contest submission?
-	pointerGalleryData = 0x22320 // +1748
-	pointerToreData    = 0x1FCB4 // +240
-	pointerGardenData  = 0x22C58 // +68
+	pointerGalleryData = 0x19680 // +1748
+	pointerToreData    = 0x17014 // +240
+	pointerGardenData  = 0x19FB8 // +68
 	pointerWeaponType  = 0x16A75 // +1
 	pointerWeaponID    = 0x1696A // +2
 	pointerHRP         = 0x17156 // +2
@@ -129,9 +129,9 @@ func (save *CharacterSaveData) Decompress() error {
 
 // This will update the character save with the values stored in the save struct
 func (save *CharacterSaveData) updateSaveDataWithStruct() {
-	//rpBytes := make([]byte, 2)
-	//binary.LittleEndian.PutUint16(rpBytes, save.RP)
-	//copy(save.decompSave[pointerRP:pointerRP+2], rpBytes)
+	rpBytes := make([]byte, 2)
+	binary.LittleEndian.PutUint16(rpBytes, save.RP)
+	copy(save.decompSave[pointerRP:pointerRP+2], rpBytes)
 	copy(save.decompSave[pointerKQF:pointerKQF+8], save.KQF)
 }
 
@@ -143,13 +143,13 @@ func (save *CharacterSaveData) updateStructWithSaveData() {
 		save.Gender = false
 	}
 	if !save.IsNewCharacter {
-		//save.RP = binary.LittleEndian.Uint16(save.decompSave[pointerRP : pointerRP+2])
-		//save.HouseTier = save.decompSave[pointerHouseTier : pointerHouseTier+5]
-		//save.HouseData = save.decompSave[pointerHouseData : pointerHouseData+195]
-		//save.BookshelfData = save.decompSave[pointerBookshelfData : pointerBookshelfData+5576]
-		//save.GalleryData = save.decompSave[pointerGalleryData : pointerGalleryData+1748]
-		//save.ToreData = save.decompSave[pointerToreData : pointerToreData+240]
-		//save.GardenData = save.decompSave[pointerGardenData : pointerGardenData+68]
+		save.RP = binary.LittleEndian.Uint16(save.decompSave[pointerRP : pointerRP+2])
+		save.HouseTier = save.decompSave[pointerHouseTier : pointerHouseTier+5]
+		save.HouseData = save.decompSave[pointerHouseData : pointerHouseData+195]
+		save.BookshelfData = save.decompSave[pointerBookshelfData : pointerBookshelfData+5576]
+		save.GalleryData = save.decompSave[pointerGalleryData : pointerGalleryData+1748]
+		save.ToreData = save.decompSave[pointerToreData : pointerToreData+240]
+		save.GardenData = save.decompSave[pointerGardenData : pointerGardenData+68]
 		save.WeaponType = save.decompSave[pointerWeaponType]
 		save.WeaponID = binary.LittleEndian.Uint16(save.decompSave[pointerWeaponID : pointerWeaponID+2])
 		save.HRP = binary.LittleEndian.Uint16(save.decompSave[pointerHRP : pointerHRP+2])
