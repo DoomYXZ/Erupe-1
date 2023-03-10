@@ -46,6 +46,18 @@ func doAckBufSucceed(s *Session, ackHandle uint32, data []byte) {
 	})
 }
 
+func doAckEventEnum(s *Session, ackHandle uint32, data [][]byte) {
+	bf := byteframe.NewByteFrame()
+	bf.WriteUint32(0x0A218EAD)
+	bf.WriteUint32(0)
+	bf.WriteUint32(0)
+	bf.WriteUint32(uint32(len(data)))
+	for i := range data {
+		bf.WriteBytes(data[i])
+	}
+	doAckBufSucceed(s, ackHandle, bf.Data())
+}
+
 func doAckBufFail(s *Session, ackHandle uint32, data []byte) {
 	s.QueueSendMHF(&mhfpacket.MsgSysAck{
 		AckHandle:        ackHandle,
