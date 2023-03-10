@@ -138,11 +138,6 @@
         "Channels": [
           { "Port": 54007, "MaxPlayers": 100 }
         ]
-      }, {
-        "Name": "MezFes", "Description": "", "IP": "", "Type": 6, "Recommended": 6, "AllowedClientFlags": 0,
-        "Channels": [
-          { "Port": 54008, "MaxPlayers": 100 }
-        ]
       }
     ]
   }
