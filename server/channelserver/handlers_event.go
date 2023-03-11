@@ -90,14 +90,14 @@ func handleMsgMhfGetWeeklySchedule(s *Session, p mhfpacket.MHFPacket) {
 }
 
 func generateFeatureWeapons(count int) activeFeature {
-	if count > 14 {
-		count = 14
+	if count > 13 {
+		count = 13
 	}
 	nums := make([]int, 0)
 	var result int
 	r := rand.New(rand.NewSource(time.Now().UnixNano()))
 	for len(nums) < count {
-		num := r.Intn(14)
+		num := r.Intn(13)
 		exist := false
 		for _, v := range nums {
 			if v == num {
