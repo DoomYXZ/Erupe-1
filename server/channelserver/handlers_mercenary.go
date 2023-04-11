@@ -56,11 +56,12 @@ func handleMsgMhfLoadLegendDispatch(s *Session, p mhfpacket.MHFPacket) {
 
 func handleMsgMhfLoadHunterNavi(s *Session, p mhfpacket.MHFPacket) {
 	pkt := p.(*mhfpacket.MsgMhfLoadHunterNavi)
+	doAckSimpleSucceed(s, pkt.AckHandle, make([]byte, 4))
+	return
 	var data []byte
 	err := s.server.db.QueryRow("SELECT hunternavi FROM characters WHERE id = $1", s.charID).Scan(&data)
 	if len(data) == 0 {
 		s.logger.Error("Failed to load hunternavi", zap.Error(err))
-		data = make([]byte, 0x226)
 	}
 	doAckBufSucceed(s, pkt.AckHandle, data)
 }

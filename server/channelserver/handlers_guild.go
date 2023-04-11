@@ -1400,11 +1400,10 @@ func handleMsgMhfEnumerateGuildMember(s *Session, p mhfpacket.MHFPacket) {
 		bf.WriteUint16(member.GR)
 		bf.WriteUint16(0)                                                                // TODO: Figure out the highest ID on Z1
 		if member.WeaponType == 1 || member.WeaponType == 5 || member.WeaponType == 10 { // If weapon is ranged
-			bf.WriteUint16(0x0700)
+			bf.WriteUint8(7)
 		} else {
-			bf.WriteUint16(0x0600)
+			bf.WriteUint8(6)
 		}
-		bf.WriteUint8(member.OrderIndex)
 		bf.WriteBool(member.AvoidLeadership)
 		ps.Uint8(bf, member.Name, true)
 	}
