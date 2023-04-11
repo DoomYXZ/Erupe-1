@@ -12,7 +12,7 @@ import (
 )
 
 const (
-	pointerGender        = 0x81    // +1
+	pointerGender        = 0x51    // +1
 	pointerRP            = 0x1A076 // +2
 	pointerHouseTier     = 0x16ECC // +5
 	pointerHouseData     = 0x17161 // +195
